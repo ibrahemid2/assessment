@@ -1,10 +1,9 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 /**
  * This file can be ignored, please work in ./components/App.jsx
  */
-
 // Include mock API.
 import './mock';
 
@@ -13,10 +12,15 @@ import './styles/index.css';
 
 // Include application component.
 import App from './components/App';
+import { CategoryFilterProvider } from './contexts/CategoryFilterContext';
 
-ReactDOM.render(
-  <React.StrictMode>
+
+const rootElement = document.getElementById('root');
+//id is given as app
+
+const root = createRoot(rootElement!);
+root.render(
+    <CategoryFilterProvider>
     <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    </CategoryFilterProvider>
 );
